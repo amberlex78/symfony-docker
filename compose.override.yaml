@@ -3,16 +3,36 @@ services:
 
   db:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-symfony}
-      POSTGRES_USER: ${POSTGRES_USER:-symfony}
+      POSTGRES_DB: ${POSTGRES_DB:-database}
+      POSTGRES_USER: ${POSTGRES_USER:-username}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
     ports:
       - ${POSTGRES_PORT:-5432}:5432
     volumes:
+#      - ./data/init-db:/docker-entrypoint-initdb.d
       - ./data/postgres-${POSTGRES_VERSION:-16}:/var/lib/postgresql/data:rw
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-symfony} -d ${POSTGRES_DB:-symfony}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-username} -d ${POSTGRES_DB:-database}"]
       interval: 10s
       timeout: 5s
       retries: 3
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    restart: unless-stopped
+    ports:
+      - ${PGADMIN_PORT}:8888
+    environment:
+      PGADMIN_DEFAULT_EMAIL: username@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
+      VIRTUAL_HOST: ${PGADMIN_VIRTUAL_HOST}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - proxy
+      - db
+
+volumes:
+  pgadmin-data:

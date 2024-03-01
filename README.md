@@ -33,3 +33,17 @@ make test
 ```
 
 To show available commands, type `make`
+
+---
+P.S. My `/etc/hosts` file for different projects:
+
+```
+127.0.0.1 example.test
+127.0.0.1 project.test
+
+127.0.0.1 symfony.test
+127.0.0.1 laravel.test
+
+127.0.0.1 adminer.test
+127.0.0.1 pgadmin.test
+```

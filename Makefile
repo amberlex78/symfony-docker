@@ -10,7 +10,7 @@ COMPOSER = $(PHP_CONT) composer
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help install bash composer console test restart rebuild build up down start  phpstan cs-diff cs-fix composer-validate
+.PHONY        : help install bash composer console test restart rebuild build up down start stop phpstan cs-diff cs-fix composer-validate
 
 ##
 ##—————————————————————————————— The Symfony Docker Makefile
