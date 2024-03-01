@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+        - XDEBUG_VERSION=${XDEBUG_VERSION}
+    volumes:
+      - ./project:/app
+      - composer:/root/.composer/cache
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+    depends_on:
+      - db
+
+  proxy:
+    image: jwilder/nginx-proxy:1.5-alpine
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - "${NGINX_PORT}:80"
+
+  nginx:
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ./project:/app
+    environment:
+      VIRTUAL_HOST: ${NGINX_VIRTUAL_HOST}
+    depends_on:
+      - php-fpm
+      - proxy
+
+volumes:
+  composer:

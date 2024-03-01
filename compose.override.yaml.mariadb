@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+
+  db:
+    image: mariadb:${MARIADB_VERSION:-11.3.2}-jammy
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
+      MARIADB_ROOT_HOST: '%'
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-symfony}
+      MARIADB_USER: ${MARIADB_USER:-symfony}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-password}
+    ports:
+      - ${MARIADB_PORT:-3306}:3306
+    volumes:
+      - ./data/mariadb-${MARIADB_VERSION:-11.3.2}:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "${ADMINER_PORT}:8080"
+    environment:
+      VIRTUAL_HOST: ${ADMINER_VIRTUAL_HOST}
+    depends_on:
+      - proxy
