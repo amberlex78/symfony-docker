@@ -9,7 +9,7 @@
 | Server   | `Nginx 1.25`, `nginx-proxy 1.5`                |
 | Tools    | `XDebug 3.3.1`, `Adminer`, `pdAdmin 4`         |
 
-## Setup
+## Setup Project
 
 Clone repository:
 
