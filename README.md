@@ -17,6 +17,14 @@ Clone repository
 git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
 ```
 
+Add lines to the `/etc/hosts` file corresponding to the virtual hosts:
+
+```
+127.0.0.1 symfony.test
+127.0.0.1 adminer.test
+127.0.0.1 pgadmin.test
+```
+
 For MySQL
 
 ```
@@ -49,12 +57,6 @@ Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
 make install
 ```
 
-Add lines to the `/etc/hosts` file corresponding to the virtual hosts:
-
-```
-127.0.0.1 symfony.test
-```
-
 In browser go to the `symfony.test`
 
 ![](art/01-symfony-test.png)
@@ -66,19 +68,6 @@ In browser go to the `symfony.test/health-check`
 ## Config
 
 See virtual hosts `NGINX_VIRTUAL_HOST`, `ADMINER_VIRTUAL_HOST` in the `.env` file.
-
-> P.S. My `/etc/hosts` file for different projects:
-
-```
-127.0.0.1 example.test
-127.0.0.1 project.test
-
-127.0.0.1 symfony.test
-127.0.0.1 laravel.test
-
-127.0.0.1 adminer.test
-127.0.0.1 pgadmin.test
-```
 
 ## Connect to Database
 
