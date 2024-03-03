@@ -28,9 +28,7 @@ git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
 make install
 ```
 
-```
-make test
-```
+## Make
 
 To show available commands, type `make`
 

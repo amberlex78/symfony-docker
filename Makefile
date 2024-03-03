@@ -6,11 +6,13 @@ PHP_CONT = $(DOCKER_COMP) exec php-fpm
 
 # Executables
 PHP      = $(PHP_CONT) php
+CONSOLE  = @$(PHP) bin/console
+PHPUNIT  = @$(PHP) bin/phpunit
 COMPOSER = $(PHP_CONT) composer
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help install bash composer console test restart rebuild build up down start stop phpstan cs-diff cs-fix composer-validate
+.PHONY        : help install bash composer test console clean route restart rebuild build up down start stop phpstan cs-diff cs-fix composer-validate
 
 ##
 ##—————————————————————————————— The Symfony Docker Makefile
@@ -22,21 +24,25 @@ install: ## Install App
 	@$(DOCKER_COMP) build --pull #--no-cache
 	@$(DOCKER_COMP) up --detach
 	@$(COMPOSER) install
+	@$(MAKE) test
 
 bash: ## Bash
 	@$(PHP_CONT) bash
 
-composer: ## Run composer (Example: make composer c='req symfony/uid')
+composer: ## Run composer command (Example: make composer c='req symfony/uid')
 	@$(COMPOSER) $(c)
 
-console: ## Run console (Example: make console c=debug:route)
-	@$(PHP) bin/console $(c)
+test: ## Run all tests (Example specify: make test c=tests/Functional)
+	@$(PHPUNIT) $(c)
 
-test: ## Run all tests
-	@$(PHP) bin/phpunit $(c)
+console: ## Run console (Example: make console c=make:controller)
+	@$(CONSOLE) $(c)
 
 clean: ## Clear App cache (env=dev)
-	@$(PHP) bin/console cache:clear --env=dev
+	@$(CONSOLE) cache:clear --env=dev
+
+route: ## Lists all your application routes
+	@$(CONSOLE) debug:route
 
 ##—————————————————————————————— Docker
 restart: stop start ## Restart the Docker containers (stop start)
