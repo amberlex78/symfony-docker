@@ -69,13 +69,13 @@ Password: password
 
 ![](art/03-pgAdmin-Login.png)
 
-Then `Add New Server` and
+Then `Add New Server` and fill in the form:
 
 ![](art/04-paAdmin-Connection.png)
 
 > These credentials are set in the `.env` file
 
-## Make
+## Makefile commands
 
 To show available commands, type `make`
 
