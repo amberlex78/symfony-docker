@@ -11,15 +11,36 @@
 
 ## Setup
 
-> By default will be installed PHP 8.3, PostgreSQL 16, pdAdmin 4
-
 Clone repository:
 
 ```
 git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
 ```
 
-Install project:
+### For MySQL
+
+```
+cp compose.override.yaml.mysql compose.override.yaml && cp .env.mysql .env
+```
+
+### For MariaDB
+
+```
+cp compose.override.yaml.mariadb compose.override.yaml && cp .env.mariadb .env
+```
+
+### For PostgreSQL
+
+```
+cp compose.override.yaml.postgre compose.override.yaml && cp .env.postgre .env
+```
+
+### Setting in the `.env` file
+
+Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
+
+### Install project
+
 ```
 make install
 ```
