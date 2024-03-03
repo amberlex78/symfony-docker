@@ -82,6 +82,20 @@ In browser go to the `symfony.test/health-check`
 
 ## Connect to Database
 
+### MySQL or MariaDB
+
+In browser go to the `adminer.test`
+
+```
+Server:   db
+Username: username
+Password: password
+Database: database
+
+```
+![](art/05-Adminer-Connection.png)
+
+
 ### PostgreSQL
 
 In browser go to the `pgadmin.test`
@@ -100,19 +114,6 @@ Then `Add New Server` and fill in the form:
 ![](art/04-paAdmin-Connection.png)
 
 > These credentials are set in the `.env` file
-
-### MySQL or MariaDB
-
-In browser go to the `adminer.test`
-
-```
-Server:   db
-Username: username
-Password: password
-Database: database
-
-```
-![](art/05-Adminer-Connection.png)
 
 ## Makefile commands
 
