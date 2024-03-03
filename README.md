@@ -75,6 +75,19 @@ Then `Add New Server` and fill in the form:
 
 > These credentials are set in the `.env` file
 
+### MySQL or MariaDB
+
+In browser go to the `adminer.test`
+
+```
+Server:   db
+Username: username
+Password: password
+Database: database
+
+```
+![](art/05-Adminer-Connection.png)
+
 ## Makefile commands
 
 To show available commands, type `make`
