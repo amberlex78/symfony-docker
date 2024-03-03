@@ -35,7 +35,7 @@ cp compose.override.yaml.mariadb compose.override.yaml && cp .env.mariadb .env
 cp compose.override.yaml.postgre compose.override.yaml && cp .env.postgre .env
 ```
 
-**Setting in the `.env` file**
+**Setting in the `project/.env` file**
 
 Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
 
