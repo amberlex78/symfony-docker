@@ -17,29 +17,29 @@ Clone repository:
 git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
 ```
 
-### For MySQL
+**For MySQL**
 
 ```
 cp compose.override.yaml.mysql compose.override.yaml && cp .env.mysql .env
 ```
 
-### For MariaDB
+**For MariaDB**
 
 ```
 cp compose.override.yaml.mariadb compose.override.yaml && cp .env.mariadb .env
 ```
 
-### For PostgreSQL
+**For PostgreSQL**
 
 ```
 cp compose.override.yaml.postgre compose.override.yaml && cp .env.postgre .env
 ```
 
-### Setting in the `.env` file
+**Setting in the `.env` file**
 
 Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
 
-### Install project
+**Install**
 
 ```
 make install
