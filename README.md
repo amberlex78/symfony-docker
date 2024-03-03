@@ -9,7 +9,7 @@
 | Server   | `Nginx 1.25`, `nginx-proxy 1.5`                |
 | Tools    | `XDebug 3.3.1`, `Adminer`, `pdAdmin 4`         |
 
-## Setup Project
+## Preparing
 
 Clone repository
 
@@ -43,15 +43,11 @@ cp project/.env.dist project/.env
 
 Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
 
-Install
+## Install
 
 ```
 make install
 ```
-
-## Config
-
-See virtual hosts `NGINX_VIRTUAL_HOST`, `ADMINER_VIRTUAL_HOST` in the `.env` file.
 
 Add lines to the `/etc/hosts` file corresponding to the virtual hosts:
 
@@ -66,6 +62,10 @@ In browser go to the `symfony.test`
 In browser go to the `symfony.test/health-check`
 
 ![](art/02-health-check.png)
+
+## Config
+
+See virtual hosts `NGINX_VIRTUAL_HOST`, `ADMINER_VIRTUAL_HOST` in the `.env` file.
 
 > P.S. My `/etc/hosts` file for different projects:
 
