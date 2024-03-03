@@ -7,9 +7,24 @@
 | PHP      | `PHP 8.2`, `PHP 8.3`                           |
 | Database | `MySQL 8.0`, `MariaDB 11.3.2`, `PostgreSQL 16` |
 | Server   | `Nginx 1.25`, `nginx-proxy 1.5`                |
-| Tools    | `XDebug 3.3.1`, `Adminer`                      |
+| Tools    | `XDebug 3.3.1`, `Adminer`, `pdAdmin 4`         |
 
 ## Setup
+
+> By default will be installed PHP 8.3, PostgreSQL 16, pdAdmin 4
+
+Clone repository:
+
+```
+git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
+```
+
+Install project:
+```
+make install
+```
+
+## Config
 
 See virtual hosts `NGINX_VIRTUAL_HOST`, `ADMINER_VIRTUAL_HOST` in the `.env` file.
 
@@ -17,16 +32,48 @@ Add lines to the `/etc/hosts` file corresponding to the virtual hosts:
 
 ```
 127.0.0.1 symfony.test
+```
+In browser go to the `symfony.test`
+
+![](art/01-symfony-test.png)
+
+In browser go to the `symfony.test/health-check`
+
+![](art/02-health-check.png)
+
+> P.S. My `/etc/hosts` file for different projects:
+
+```
+127.0.0.1 example.test
+127.0.0.1 project.test
+
+127.0.0.1 symfony.test
+127.0.0.1 laravel.test
+
 127.0.0.1 adminer.test
+127.0.0.1 pgadmin.test
 ```
 
-```
-git clone git@github.com:amberlex78/symfony-docker.git && cd symfony-docker
-```
+## Connect to Database
+
+### PostgreSQL
+
+In browser go to the `pgadmin.test`
 
 ```
-make install
+Email:    username@example.com
+Password: password
 ```
+
+> These credentials are set in the `compose.override.yaml`
+
+![](art/03-pgAdmin-Login.png)
+
+Then `Add New Server` and
+
+![](art/04-paAdmin-Connection.png)
+
+> These credentials are set in the `.env` file
 
 ## Make
 
