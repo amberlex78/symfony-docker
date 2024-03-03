@@ -37,6 +37,10 @@ cp compose.override.yaml.postgre compose.override.yaml && cp .env.postgre .env
 
 **Setting in the `project/.env` file**
 
+```
+cp project/.env.dist project/.env
+```
+
 Uncomment the corresponding line with `DATABASE_URL` in the `project/.env` file.
 
 **Install**
